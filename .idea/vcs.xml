@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/3.急性低血压筛选条件/3matlab提取数据库中的参数extract_GCS" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/3.急性低血压筛选条件/4matlab加入GCS等参数到特征值矩阵" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/919个样本的分类算法/GA" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/919个样本的分类算法/机器学习算法：AdaBosot、LR、ANN、SVM" vcs="Git" />
+  </component>
+</project>
