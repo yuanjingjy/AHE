@@ -1,3 +1,4 @@
+
 # Acute Hypotension Episode 
 
 ## 波形数据下载
@@ -29,3 +30,5 @@ MIMICII临床数据库安装https://physionet.org/works/MIMICIIClinicalDatabase/
  
  ### 919个样本的程序
     机器学习算法：AdaBoost、LR、ANN、SVM<br>
+    这个机器学习的程序在AdaBoost的仓库中<br>
+    遗传算法和MIV降维的程序在GA仓库中<br>
