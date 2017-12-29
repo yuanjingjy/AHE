@@ -189,7 +189,7 @@ cd ..
 %进行替换的，而整个特征值矩阵是7个变量的77个特征值排列到一起，所以需要调用7次
 %pro_nan函数
 for k=1:7
-    start=(k-1)*11+1;
+   start=(k-1)*11+1;
    tmp=final_eigen(:,start:start+10);
    pro_nandata=pro_nan(tmp);
    final_eigen(:,start:start+10)=pro_nandata;
