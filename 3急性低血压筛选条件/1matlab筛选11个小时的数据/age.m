@@ -1,8 +1,8 @@
 clc;
 clear all;
-addpath(genpath('E:/预测低血容量/201703'))
+addpath(genpath('F:\F盘\Project\急性低血压\3.急性低血压筛选条件\1matlab筛选11个小时的数据'))
 
-path='L:\Available\';%存放数据的文件夹
+path='D:\Available_yj\already\';%存放数据的文件夹
 FileList=dir(path);%提取文件夹下的文件
 cd(path)%路径切换到存放数据的文件夹
 for i=1:length(FileList)
@@ -28,21 +28,37 @@ for i=1:length(FileList)
                 if strcmp(data_split{1,2},'<age>:')
                     age_tmp=data_split{1,3};
                     sex_tmp=data_split{1,5};
-                    agesex(1)=str2num(age_tmp(1:2));
+                    len=length(age_tmp);
+                  
+                    if len>2 
+                        agesex(1)=300;
+                    else
+                        if strcmp(age_tmp,'??')
+                            agesex(1)=-100;
+                        else
+                            agesex(1)=str2num(age_tmp);   
+                        end
+                    end
+                    
+                    
+
+                    if strcmp(sex_tmp,'?')
+                        agesex(2)=-100
+                    end
                     if strcmp(sex_tmp,'F')
                         agesex(2)=1;
                     else
                         agesex(2)=0;
                     end
                 end
-                agename=filename_tmp(1:6);
+                agename=[filename_tmp(1:end-4),'_age.mat'];                
                 save (agename, 'agesex')
             end
             
          end         
         
 %          save (hea_name, 'headfile')
-%          fclose(fid);       
+         fclose(fid);       
    end
           
       cd ..%返回上一级目录
