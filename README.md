@@ -21,7 +21,7 @@
     * [支持向量机]()  
 * [对比算法——早期预警评分]()
 
-#波形数据下载
+# 波形数据下载
 
 WFDB软件安装方法：[https://www.physionet.org/physiotools/wfdb-windows-quick-start.shtml](https://www.physionet.org/physiotools/wfdb-windows-quick-start.shtml) <br>
 匹配数据库下载方法：[https://www.physionet.org/physiobank/database/mimic2wdb/matched/](https://www.physionet.org/physiobank/database/mimic2wdb/matched/) <br>
