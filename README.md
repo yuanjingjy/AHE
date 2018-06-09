@@ -44,7 +44,7 @@ MIMICII临床数据库安装[https://physionet.org/works/MIMICIIClinicalDatabase
     4.AHE和nonAHE两个文件夹中，同一病人可能有多条AHE或nonAHE的数据记录
     5. 若对于有多条数据记录的病人只取第一次筛选出来的记录：则发生AHE的样本有
         598人，未发生AHE的有695（应该是696,但排除了一个年龄小于16周岁的）人
-     6.排除重复病人的过程在数据库中进行
+     6.排除重复病人的过程在数据库中进行。
         
 ## SelectSamples_generateeigen  
     该文件夹内程序的主要功能为：  
