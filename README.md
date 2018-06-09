@@ -3,24 +3,24 @@
 # 目录
 * [数据下载](#波形数据下载)
 * [波形数据格式转换](#波形数据格式转换)  
-* [数据文件](#Data文件)
-* [特征值矩阵生产](#SelectSamples_generateeigen)
+* [数据文件](#data文件)
+* [特征值矩阵生产](#selectsamples_generateeigen)
     * [可用11小时数据段筛选](#select-11-hours-data-with-matlab)  
     * [趋势数据特征值提取](#generate-feature-eigen-with-matlab) 
     * [时间点提取](#extract-timepoint-with-matlab)
-    * [生成特征值矩阵](#generate_final_eigen_with_SQL)
-* [机器学习](#DataProcess_MachineLearning)
-    * [缺失数据插补](#Missingdata)
-    * [特征工程](#FeatureSelection)
-        * [Filter方法](#Filter)  
-        * [遗传算法](#GA)   
-        * [平均影响值](#MIV)
-    * [机器学习算法](#MachineLearning)  
-        * [神经网络](#ANN)
-        * [逻辑回归](#LR)
-        * [AdaBoost](#AdaBoost)
-        * [支持向量机](#SVM)    
-* [对比算法—早期预警评分](#MEWS)
+    * [生成特征值矩阵](#generate_final_eigen_with_sql)
+* [机器学习](#dataprocess_machinelearning)
+    * [缺失数据插补](#missingdata)
+    * [特征工程](#featureselection)
+        * [Filter方法](#filter)  
+        * [遗传算法](#ga)   
+        * [平均影响值](#miv)
+    * [机器学习算法](#machinelearning)  
+        * [神经网络](#ann)
+        * [逻辑回归](#lr)
+        * [AdaBoost](#adaboost)
+        * [支持向量机](#svm)    
+* [对比算法—早期预警评分](#mews)
 
 ## 波形数据下载  
 WFDB软件安装方法：[https://www.physionet.org/physiotools/wfdb-windows-quick-start.shtml](https://www.physionet.org/physiotools/wfdb-windows-quick-start.shtml) <br>
@@ -34,7 +34,7 @@ MIMICII临床数据库安装[https://physionet.org/works/MIMICIIClinicalDatabase
     convert_wavedata.sh
 
 
-## Data文件   
+## data文件   
     1.里面有两个文件夹，AHE和nonAHE，分别是筛选出来的发生急性低血压和
         未发生急性低血压的11小时数据段。
     2.AHE文件夹中有755个数据段和一个文件夹，文件夹中的一个数据段时间格式
@@ -46,7 +46,7 @@ MIMICII临床数据库安装[https://physionet.org/works/MIMICIIClinicalDatabase
         598人，未发生AHE的有695（应该是696,但排除了一个年龄小于16周岁的）人
      6.排除重复病人的过程在数据库中进行。
         
-## SelectSamples_generateeigen  
+## selectsamples_generateeigen  
     该文件夹内程序的主要功能为：  
         1.  可用11小时数据段筛选
         2. 趋势数据特征值提取
@@ -76,42 +76,42 @@ MIMICII临床数据库安装[https://physionet.org/works/MIMICIIClinicalDatabase
         3. 保存未发生AHE样本原始数据记录的起始时刻以及11小时数据段对应的位置，
             手动和之前的特征值矩阵进行拼接，用于后期从数据库中提取临床参数
             
-### generate_final_eigen_with_SQL  
+### generate_final_eigen_with_sql
     本文件夹内程序的主要功能为根据筛选出的AHE、非AHE样本对应的subject_id,  
     starttime,startpoint,从数据库中提取GCS、温度、身高、体重数据
     
-## DataProcess_MachineLearning  
+## dataProcess_machineLearning  
     机器学习的整个过程：  
             1. 缺失数据插值：`Missingdata`文件夹  
             2. 特征工程：`GA`文件夹以及`Featureselection_MachineLearning`文件夹中的`FS.py`  
             3. 机器学习算法：`Featureselection_MachineLearning`文件夹  
             4.对比方法`MEWS`文件夹
             
-### Missingdata  
+### missingdata  
     对缺失数据进行插补：首先分析各特征值的缺失比例；然后去除含缺失数据的样本
     再按照缺失比例人为构造缺失数据集；利用常用的缺失值插补方法对构造出的缺失
     数据集进行插补；比较插补结果和完整数据集之间的误差，确定最优的插补方法
     并进行缺失值的插补。
     
-### FeatureSelection  
+### featuredelection  
     重要特征筛选，可用方法包括：
         Filter方法：Gini_index、Fisher_score、ReliefF、mRMR等
         Wrapper方法：递归特征删除、平均影响值、建模时各模型的权重
         Embedded方法：正则化方法、遗传算法
         
-#### Filter  
+#### Fflter  
     1.首先计算Relief、Fisher-score、Gini_index三个得分值，归一化后叠加到
         一起得到最终分值，注意Gini_Index是得分越小特征越重要
     2.根据叠加后的分值对特征值进行排序
     3.根据排序结果逐个增加特征值，得到BER平均值及std的变化曲线并进行保存
     
-#### GA  
+#### ga
     1. 遗传算法+神经网络筛选特征值
     2. 用的是DEAP框架
     3. 进行50次遗传算法的运行结果中，0表示本次运行未选中，1表示被选中
     4. 按照遗传算法运行过程中特征值被选中的次数对特征值进行排序，根据排序结果，
         将特征值逐步增加带入到神经网络中看预测结果
-### MIV   
+### miv 
     本程序针对于神经网络算法，用平均影响值的方式对特征值进行筛选：
         1.平均影响值计算过程：首先用全部特征值训练出神经网络模型，然后将当个特征值
             的数值增加10%和减小10%，分别用训练出的神经网络模型进行预测，两个预测结果之间的
@@ -119,26 +119,26 @@ MIMICII临床数据库安装[https://physionet.org/works/MIMICIIClinicalDatabase
         2.得到各个特征值对应的平均影响值后特征值进行排序，平均影响值即代表该特征的重要程度
         3. 按照特征重要性排序结果，逐个增加特征值的方式比较不同特征子集对应的模型预测结果
     
-### MachineLearning  
+### machinelearning  
     包含神经网络、AdaBoost、逻辑回归、支持向量机算法的实现及测试程序
     
-#### ANN  
+#### ann 
     Featureselection_MachineLearning/ann.py
     Featureselection_MachineLearning/testann.py
     
-#### LR  
+#### lr
     Featureselection_MachineLearning/logRegres.py
     Featureselection_MachineLearning/testLR.py
     
-#### AdaBoost  
+#### adaboost  
     Featureselection_MachineLearning/adaboost.py
     Featureselection_MachineLearning/testcross.py
     
-#### SVM  
+#### svm 
     Featureselection_MachineLearning/ann.py
     Featureselection_MachineLearning/testSVM.py
             
-## MEWS  
+## mews 
     主要功能为：
         1.SQL提取AHE发生前30min内的GCS、Tem的最大值、最小值、平均值，缺失情况
             用前一个时刻的记录值代替
