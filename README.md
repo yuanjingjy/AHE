@@ -1,7 +1,7 @@
 
 # Acute Hypotension Episode 
 # 目录
-* [数据下载](/##波形数据下载)  
+* [数据下载](##波形数据下载)  
 * [波形数据格式转换](##波形数据格式转换)  
 * [数据文件](##Data)
 * [特征值矩阵生产](##SelectSamples_generateeigen)
@@ -22,8 +22,7 @@
         * [支持向量机](####SVM)    
 * [对比算法—早期预警评分](##MEWS)
 
-## 波形数据下载
-
+## 波形数据下载  
 WFDB软件安装方法：[https://www.physionet.org/physiotools/wfdb-windows-quick-start.shtml](https://www.physionet.org/physiotools/wfdb-windows-quick-start.shtml) <br>
 匹配数据库下载方法：[https://www.physionet.org/physiobank/database/mimic2wdb/matched/](https://www.physionet.org/physiobank/database/mimic2wdb/matched/) <br>
 原始波形数据格式转换[https://physionet.org/faq.shtml#tar-gz](https://physionet.org/faq.shtml#tar-gz)<br>
@@ -31,11 +30,11 @@ MIMICII临床数据库下载网址[https://physionet.org/works/MIMICIIClinicalDa
 MIMICII临床数据库安装[https://physionet.org/works/MIMICIIClinicalDatabase/files/](https://physionet.org/works/MIMICIIClinicalDatabase/files/)<br>
 [https://github.com/AndreaBravi/MIMIC2](https://github.com/AndreaBravi/MIMIC2)
 
-## 波形数据格式转换
+## 波形数据格式转换  
     convert_wavedata.sh
 
 
-## Data
+## Data  
     1.里面有两个文件夹，AHE和nonAHE，分别是筛选出来的发生急性低血压和
         未发生急性低血压的11小时数据段。
     2.AHE文件夹中有755个数据段和一个文件夹，文件夹中的一个数据段时间格式
