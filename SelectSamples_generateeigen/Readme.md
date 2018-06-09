@@ -26,7 +26,7 @@
     * [locate_AHE.m](#locate_AHE)
     * [savetimepoint_ahe.m](#savetimepoint_ahe)
     * [savetimepoint_non.m](#savetimepoint_non)
-* [generate_final_eigen_with_SQL](#generate_final_eigen_with_SQL)
+* [generate_final_eigen_with_SQL](#generate_final_eigen_with_sql)
     * [extract_clinical_data.sql](#extract_clinical_data)
     * [sheet_export_from_database](#sheet_export_from_database)
         * export_finaleigen_duplicate.csv
