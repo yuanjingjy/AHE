@@ -1,8 +1,8 @@
 # Content
 
-* [Abstract](##Abstract)
-    * [extract_clinical_data.sql](###extract_clinical_data.sql)
-    * [sheet_export_from_database](###sheet_export_from_database)
+* [Abstract](#Abstract)
+    * [extract_clinical_data.sql](#extract_clinical_data.sql)
+    * [sheet_export_from_database](#sheet_export_from_database)
         * export_finaleigen_duplicate.csv
         * export_finaleigen_single.csv
 
