@@ -1,29 +1,29 @@
 # Content
 ***
-* [Abstract](#Abstract)  
+* [Abstract](#abstract)  
 * [select-11-hours-data-with matlab](#select-11-hours-data-with-matlab)  
     * [loaddata.m](#loaddata)  
     * [age.m](#age)
-    * [selectAHE.m](#selectAHE)
-        * [findAHE.m](#findAHE)
-        * [AHEEpisode.m](#AHEEpisode) 
-    *  [select_nonAHE](#select_nonAHE) 
+    * [selectAHE.m](#selectahe)
+        * [findAHE.m](#findahe)
+        * [AHEEpisode.m](#aheepisode) 
+    *  [select_nonAHE](#select_nonahe) 
         * [mvdir.m](#mvdir)
         * [selectnon.m](#selectnon)
-        * [findnonAHE.m](#findnonAHE)
+        * [findnonAHE.m](#findnonahe)
 * [generate-feature-eigen-with-matlab](#generate-feature-eigen-with-matlab)
     * [combinedata.m](#combinedata)
     * [create_eigen.m](#create_eigen)
     * [extractagesex.m](#extractagesex)
     * [latest.m](#latest)
-    * [mmMissingValues.m](#mmMissingValues)
+    * [mmMissingValues.m](#missingvalues)
     * [pro_nan.m](#pro_nan)
-    * [reSample.m](#reSample)
+    * [reSample.m](#resample)
     * [tezhengzhi.m](#tezhegnzhi)
     * [xigma.m](#xigma)
 * [extract-timepoint-with-matlab](#extract-mimic-data-with-matlab)
     * [extracttime.m](#extracttime)
-    * [locate_AHE.m](#locate_AHE)
+    * [locate_AHE.m](#locate_ahe)
     * [savetimepoint_ahe.m](#savetimepoint_ahe)
     * [savetimepoint_non.m](#savetimepoint_non)
 * [generate_final_eigen_with_SQL](#generate_final_eigen_with_sql)
@@ -33,7 +33,7 @@
         * export_finaleigen_single.csv
 ___
 
-## Abstract
+## abstract
     该文件夹内程序的主要功能为：  
         1. 可用11小时数据段筛选
         2. 趋势数据特征值提取
@@ -66,7 +66,7 @@ ___
     %   path='D:\Available_yj\already\*_age.mat'
 
 
-### selectAHE
+### selectahe
     %Description：
     %   从path='D:\Available_yj\already\*_selected.mat'文件中筛选发生急性低血压的样本，
     %   将发生的存储到path=‘D:\1yj_AHE\'中
@@ -75,7 +75,7 @@ ___
     %Output:
     %   path='D:\1yj_AHE\*_AHE.mat'
     
-#### findAHE
+#### findahe
         function [AHEdata] = findAHE( inputdata,ForecastWin,Win,VAL,TOL)
         %------------------------程序功能说明-------------------%
         %本程序的功能为按照急性低血压的定义：预测窗口内（1个小时）对于给定的每分钟
@@ -97,7 +97,7 @@ ___
         %       VAL：发生低血压时血压值的最低限值，60mmHg（输入60）
         %       TOL：Win内血压值地与VAL的个数占整个窗口的比例（输入0.9）
         
-#### AHEEpisode
+#### aheepisode
         function [ ahe_find] = AHEEpisode( input,WIN,VAL,TOL )
         %Description:
         %   该函数的功能为判断1个小时的数据窗口内是否发生了急性低血压
@@ -111,7 +111,7 @@ ___
         %   VAL：发生低血压的ABPMean下限值，为60mmHg
         %   TOL：发生AHE时，低于下限值VAL的点所占的比例，为0.9
 
-### select_nonAHE
+### select_nonahe
     文件夹，里面的两个文件用来筛选对照组：未发生急性低血压的样本
 
 #### mvdir
@@ -138,7 +138,7 @@ ___
     %       output_data:筛选结果，遇到1个符合规则的即保存，后续数据不再进行判断
     %       startpoint:11小时数据段的起始位置
 
-#### findnonAHE
+#### findnonahe
     %Description:
     %   调用selectnon.m文件，筛选未发生急性低血压的样本
     %Input:
@@ -207,7 +207,7 @@ ___
     %   nonAHE：未发生AHE的11小时数据段文件夹
     %Output:
     %   final_eigen：特征值矩阵
-### mmMissingValues
+### missingvalues
     %Description:
      %   该函数寻找缺失值及异常大、异常小值的位置
      %   各生理参数上限值：  
@@ -231,7 +231,7 @@ ___
     %Output：
     %    output：补全之后的特征参数矩阵
     
-### reSample
+### resample
     %Description:
     %   对输入数据每隔30个数求一次平均值，主要目的是用有创血压模拟无创血压，30min测一次
     %Input：
@@ -282,7 +282,7 @@ ___
     %Output:
     %   starttimestr:PostgresSQL支持的时间字符串
     
-### locate_AHE
+### locate_ahe
     %Description：
     %   找到筛选出的数据段在原始数据段中的位置
     %Input：
