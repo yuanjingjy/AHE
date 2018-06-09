@@ -1,4 +1,4 @@
-#Content
+# Content
 
 * [sql_eigen.csv](##sql_eigen.csv)
 * [MIV.py](##MIV.py)  
@@ -9,10 +9,10 @@
 * [counts.py](##counts.py)
 * [ann.py](##ann.py)
 
-##sql_eigen.csv
+## sql_eigen.csv
     之前62个特征值时的特征值矩阵，MIV.py 程序中还用的是这个数据，就没删
     
-##MIV.py
+## MIV.py
     Description:
     本程序针对于神经网络算法，用平均影响值的方式对特征值进行筛选：
         1.平均影响值计算过程：首先用全部特征值训练出神经网络模型，然后将当个特征值
@@ -23,29 +23,29 @@
     Input：
         sql_eigen.csv:全部样本的特征值矩阵
         
-##global_new.py
+## global_new.py
     因为此部分每种算法的处理流程都是一样的：提取数据、哑变量处理、归一化，所以
     此处将数据当作全局变量进行处理，各个算法直接调用
     提取特征值，对哑变量性别进行处理，然后进行归一化
     0——79列是特征值，最后一列是标签
     
-##GAscores.py
+## GAscores.py
     遗传算法的运行程序，用的是DEAP框架
     individual大小：特征值个数
     进化g=100代，运行iter=100次
     
-##garesult2018.csv
+## garesult2018.csv
     80个特征值（性别进行哑变量处理后）进行50次遗传算法的运行结果中，0表
     示本次运行 未选中，1表示被选中
     
-##final_eigen.csv
+## final_eigen.csv
     用在global_new.py程序中的，最新的79个特征值的特征值矩阵
     
-##counts.py
+## counts.py
     按照遗传算法运行过程中特征值被选中的次数对特征值进行排序，根据排序结果，
     将特征值逐步增加带入到神经网络中看预测结果
     
-##ann.py
+## ann.py
     里面包含方法有：
         加载txt格式数据文件方法
         将数据归一化到[0,1]

@@ -1,22 +1,22 @@
-#Content
+# Content
 
 * [Abstract](##Abstract)
 * [export_finaleigen_single](##export_finaleigen_single.csv)
 * [final_eigen.csv](##final_eigen.csv)
 * [pro_miss.R](##pro_miss.R)
 
-##Abstract
+## Abstract
     对缺失数据进行插补：首先分析各特征值的缺失比例；然后去除含缺失数据的样本
     再按照缺失比例人为构造缺失数据集；利用常用的缺失值插补方法对构造出的缺失
     数据集进行插补；比较插补结果和完整数据集之间的误差，确定最优的插补方法
     并进行缺失值的插补。
-##export_finaleigen_single.csv
+## export_finaleigen_single.csv
     从数据库中提取出来的含有缺失值的特征值矩阵，即需要进行插补的矩阵
     
-##final_eigen.csv
+## final_eigen.csv
     插补之后的结果
     
-##pro_miss.R
+## pro_miss.R
     原始项目文件路径：‘F:\F盘\Project\急性低血压\2018修改版\Missingdata’
     处理流程：
     1.异常数据处理：  (此处#表示R语言中的注释)
