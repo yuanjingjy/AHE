@@ -99,7 +99,7 @@ MIMICII临床数据库安装[https://physionet.org/works/MIMICIIClinicalDatabase
         Wrapper方法：递归特征删除、平均影响值、建模时各模型的权重
         Embedded方法：正则化方法、遗传算法
         
-#### Fflter  
+#### filter 
     1.首先计算Relief、Fisher-score、Gini_index三个得分值，归一化后叠加到
         一起得到最终分值，注意Gini_Index是得分越小特征越重要
     2.根据叠加后的分值对特征值进行排序
