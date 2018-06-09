@@ -1,9 +1,9 @@
 # Content
 
-* [Abstract](##Abstract)
-* [export_finaleigen_single](##export_finaleigen_single.csv)
-* [final_eigen.csv](##final_eigen.csv)
-* [pro_miss.R](##pro_miss.R)
+* [Abstract](#Abstract)
+* [export_finaleigen_single](#export_finaleigen_single.csv)
+* [final_eigen.csv](#final_eigen.csv)
+* [pro_miss.R](#pro_miss.R)
 
 ## Abstract
     对缺失数据进行插补：首先分析各特征值的缺失比例；然后去除含缺失数据的样本
