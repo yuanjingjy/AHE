@@ -2,7 +2,7 @@
 ***
 * [Abstract](#Abstract)  
 * [select-11-hours-data-with matlab](#select-11-hours-data-with-matlab)  
-    * [loaddata.m](#loaddata.m)  
+    * [loaddata.m](#loaddata)  
     * [age.m](#age.m)
     * [selectAHE.m](#selectAHE.m)
         * [findAHE.m](#findAHE.m)
@@ -46,7 +46,7 @@ ___
         2. 从每个数据记录对应的头文件中提取年龄和性别
         3. 根据AHE定义，从全部数据记录中筛选发生AHE的11小时数据段
         4. 挑选完AHE患者后，从剩余患者中筛选出未发生AHE的11小时数据段
-### loaddata.m
+### loaddata
     % Description：
     %   本程序对convert_wavedata之后的原始波形文件进行格式转换，按照基线、增益处理后，
     %   将生理参数按照特定的顺序进行排列：HR、SBP、DBP、MBP、PULSE、RESP、SPO2
