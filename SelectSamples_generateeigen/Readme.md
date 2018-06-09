@@ -319,7 +319,7 @@ ___
     --从matlab中得到包含年龄、性别、整个数据段其实记录时间、AHE开始时间点、70个特征值的表
     --根据subject_id,找到GCS、身高、体重、体温数据
     
-### sheet_export_from_database
+### sheet_export_from_database  
     本文件夹下存放的是从数据库导出的最终特征值矩阵结果:
         1.export_finaleigen_duplicate.csv
             _duplicate.csv结尾的文件有1648个样本，一个病人可能有多条记录
