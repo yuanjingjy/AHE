@@ -1,9 +1,9 @@
 # Content
 
 * [sql_eigen.csv](#sql_eigen.csv)
-* [MIV.py](#MIV.py)  
+* [MIV.py](#miv.py)  
 * [global_new.py](#global_new.py)  
-* [GAscores.py](#GAscores.py)  
+* [GAscores.py](#gascores.py)  
 * [garesult2018.csv](#garesult2018.csv)
 * [final_eigen.csv](#final_eigen.csv)
 * [counts.py](#counts.py)
@@ -12,7 +12,7 @@
 ## sql_eigen.csv
     之前62个特征值时的特征值矩阵，MIV.py 程序中还用的是这个数据，就没删
     
-## MIV.py
+## miv.py
     Description:
     本程序针对于神经网络算法，用平均影响值的方式对特征值进行筛选：
         1.平均影响值计算过程：首先用全部特征值训练出神经网络模型，然后将当个特征值
@@ -29,7 +29,7 @@
     提取特征值，对哑变量性别进行处理，然后进行归一化
     0——79列是特征值，最后一列是标签
     
-## GAscores.py
+## gascores.py
     遗传算法的运行程序，用的是DEAP框架
     individual大小：特征值个数
     进化g=100代，运行iter=100次

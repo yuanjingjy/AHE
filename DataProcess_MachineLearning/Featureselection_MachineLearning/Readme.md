@@ -1,52 +1,52 @@
 #Content
-* [Abstract](#Abstract)
-* [BER](#BER)
+* [Abstract](#abstract)
+* [BER](#ber)
 * [selectresult](#selectresult)
 * [adaboost.py](#adaboost.py)
-    * [loadDataSet(fileName)](#loadDataSet(fileName))
-    * [stumpClassify(dataMatrix,dimen,threshVal,threshIneq)](#stumpClassify(dataMatrix,dimen,threshVal,threshIneq))
-    * [buildStump(dataArr,classLabels,D)](#buildStump(dataArr,classLabels,D))
-    * [adaBoostTrainDS(dataArr,classLabels,numIt=40)](#adaBoostTrainDS(dataArr,classLabels,numIt=40))
-    * [adaClassify(datToClass,classifierArr)](#adaClassify(datToClass,classifierArr))
-    * [plotROC(predStrengths, classLabels)](#plotROC(predStrengths,classLabels))
+    * [loadDataSet(fileName)](#loaddataset(filename))
+    * [stumpClassify(dataMatrix,dimen,threshVal,threshIneq)](#stumpclassify(datamatrix,dimen,threshval,threshIneq))
+    * [buildStump(dataArr,classLabels,D)](#buildStump(dataarr,classlabels,d))
+    * [adaBoostTrainDS(dataArr,classLabels,numIt=40)](#adaboosttrainds(dataarr,classaabels,numIt=40))
+    * [adaClassify(datToClass,classifierArr)](#adaclassify(dattoclass,classifierarr))
+    * [plotROC(predStrengths, classLabels)](#plotroc(predstrengths,classlabels))
     * [evaluatemodel(y_true,y_predict,proba)](#evaluatemodel(y_true,y_predict,proba))
 * [ann.py](#ann.py)
-    * [loadDataSet(filename)](#loadDataSet(filename))
+    * [loadDataSet(filename)](#loaddataset(filename))
     * [preprocess(dataset)](#preprocess(dataset))
     * [preprocess1(dataset)](#preprocess1(dataset))
     * [rowscale(dataset)](#rowscale(dataset))
-    * [ANNClassifier(neuo,trainin,trainout,testin)](#ANNClassifier(neuo,trainin,trainout,testin))
-    * [SVMClassifier(trainin,trainout,testin)](#SVMClassifier(trainin,trainout,testin))
+    * [ANNClassifier(neuo,trainin,trainout,testin)](#annclassifier(neuo,trainin,trainout,testin))
+    * [SVMClassifier(trainin,trainout,testin)](#svmclassifier(trainin,trainout,testin))
     * [evaluatemodel(y_true,y_predict,proba)](#evaluatemodel(y_true,y_predict,proba))
 * [comparemodel.py](#comparemodel.py)  
 * [final_eigen.csv](#final_eigen.csv)
-* [FS.py](#FS.py)  
-* [FSscore.csv](#FSscore.csv)
-* [FSsort.csv](#FSsort.csv)
+* [FS.py](#fs.py)  
+* [FSscore.csv](#fsscore.csv)
+* [FSsort.csv](#fssort.csv)
 * [global_new.py](#global_new.py)
-* [logRegres.py](#logRegres.py)
-    * [loadDataSet()](#loadDataSet())
-    * [sigmoid(inX)](#sigmoid(inX))
-    * [gradAscent(dataMatIn, classLabels)](#gradAscent(dataMatIn,classLabels))
-    * [plotBestFit(weights):](#plotBestFit(weights))
-    * [stocGradAscent0(dataMatrix, classLabels)](#stocGradAscent0(dataMatrix,classLabels))
-    * [stocGradAscent1(dataMatrix, classLabels, numIter=150)](#stocGradAscent1(dataMatrix,classLabels,numIter=150))
-    * [classifyVector(inX, weights)](#classifyVector(inX,weights))
-    * [classifyProb(inX, weights)](#classifyProb(inX,weights))
-    * [colicTest()](#colicTest())
-    * [multiTest()](#multiTest())
+* [logRegres.py](#logregres.py)
+    * [loadDataSet()](#loaddataset())
+    * [sigmoid(inX)](#sigmoid(inx))
+    * [gradAscent(dataMatIn, classLabels)](#gradascent(datamatIn,classlabels))
+    * [plotBestFit(weights):](#plotbestfit(weights))
+    * [stocGradAscent0(dataMatrix, classLabels)](#stocgradascent0(datamatrix,classlabels))
+    * [stocGradAscent1(dataMatrix, classLabels, numIter=150)](#stocgradascent1(datamatrix,classlabels,numIter=150))
+    * [classifyVector(inX, weights)](#classifyvector(inx,weights))
+    * [classifyProb(inX, weights)](#classifyprob(inx,weights))
+    * [colicTest()](#colictest())
+    * [multiTest()](#multitest())
 * [resultplot.py](#resultplot.py)
-* [sortedFeature.csv](#sortedFeature.csv)
+* [sortedFeature.csv](#sortedfeature.csv)
 * [testann.py](#testann.py)
 * [ttestcross.py](#testcross.py)
-* [testLR.py](#testLR.py)
-* [testSVM.py](#testSVM.py)
+* [testLR.py](#testlr.py)
+* [testSVM.py](#testsvm.py)
 
 
-## Abstract
+## abstract
     本文件夹中包含神经网络、AdaBoost、逻辑回归、支持向量机算法的实现及测试程序
     
-## BER
+## ber
     BER文件夹下的csv文件为四中机器学习算法对应全部特征值“_all”、BER最小时特征值子集"_min"、
     以及特征值数目最小时"_ks"对应的测试集十折交叉验证的各评价指标结果
     
@@ -58,12 +58,12 @@
 ## adaboost.py
     AdaBoost算法的实现
     
-### loadDataSet(fileName)
+### loaddataset(filename)
     '''
     从txt中导入数据和标签，最后一列为标签
     '''  
     
-### stumpClassify(dataMatrix,dimen,threshVal,threshIneq)
+### stumpclassify(datamatrix,dimen,threshval,threshIneq)
     '''
     Description:
         按照单一的特征进行分类
@@ -76,7 +76,7 @@
         retArray:分类的结果
     '''
     
-### buildStump(dataArr,classLabels,D)
+### buildstump(dataarr,classlabels,d)
     """
     Description:
      构建单层决策树
@@ -89,7 +89,7 @@
         minError：最优决策树对应的分类误差
          bestClasEst：最优决策树对应的分类结果
     """
-### adaBoostTrainDS(dataArr,classLabels,numIt=40)
+### adaboostTrainds(dataarr,classlabels,numIt=40)
     """
     Description:
         1.AdaBoost算法训练，刚开始时初始化每个样本的权重D为相等的（样本数目分之一）
@@ -106,7 +106,7 @@
         weakClassArr：输出的弱分类器，每个弱分类器对应有：所用的特征值、分类阈值、分类符号、弱分类器的权重
         aggClassEst：分类的结果,概率值
     """
-### adaClassify(datToClass,classifierArr)
+### adaclassify(datToclass,classifierarr)
     Description:
         应用训练好的弱分类器进行分类
     Input:
@@ -115,7 +115,7 @@
     Output:
         sign(aggClassEst)：分类的结果，标签
         aggClassEst：分类的结果，概率值
-### plotROC(predStrengths,classLabels)
+### plotroc(predstrengths,classlabels)
     Description:
      绘制ROC曲线并求曲线下面积
     Input：
@@ -137,7 +137,7 @@
 ## ann.py
     包含神经网络分类器、支持向量机分类器、模型评价等
     
-### loadDataSet(filename)
+### loaddataset(filename)
     加载txt格式的数据文件
 ### preprocess(dataset)
     将特征值规范化到[0,1]之间
@@ -146,7 +146,7 @@
 ### rowscale(dataset)
     normalize the data between -1 and 1 according to row
     按行归一化，默认的按列
-### ANNClassifier(neuo,trainin,trainout,testin)
+### annclassifier(neuo,trainin,trainout,testin)
     Description:
         神经网络分类器
     Input:
@@ -158,7 +158,7 @@
         test_predict:对测试集数据的预测结果，0，1标签
         proba_train:对训练集数据的预测结果，概率值
         proba_test:对测试集数据的预测结果，概率值
-### SVMClassifier(trainin,trainout,testin)
+### svmclassifier(trainin,trainout,testin)
     Description:
         支持向量机分类器
     Input:
@@ -189,7 +189,7 @@
 ## final_eigen.csv
     特征值矩阵
     
-## FS.py
+## fs.py
     Description：
         1.首先计算Relief、Fisher-score、Gini_index三个得分值，归一化后叠加到一起得到最终分值
         2.根据叠加后的分值对特征值进行排序
@@ -205,10 +205,10 @@
                         sortedFeature.csv文件
         writemean：逐步增加特征值个数时，当前算法对应的BER平均值
         writestd：逐步增加特征值个数时，当前算法对应的BER标准差
-## FSscore.csv
+## fsscore.csv
     记录的是特征值对应的各个特征选择方法的得分值以及最终的组合分值
     特征值的排列顺序不变
-## FSsort.csv
+## fssort.csv
     数据跟上面的FSscore.csv是一样的，只不过特征值是按照组合得分进行排序的
 ## global_new.py
     Description：
@@ -219,22 +219,22 @@
         final_eigen.csv:特征值矩阵
     输出结果：
         framefile: 处理完哑变量后的，归一化到[0,1]之间的各个特征值及标签
-## logRegres.py
+## logregres.py
     逻辑回归的实现过程
-### loadDataSet()
+### loaddataSet()
     Description:
         加载数据
     Output:
         datamat:特征值矩阵
         labelmat:标签
-### sigmoid(inX)
+### sigmoid(inx)
     Description:
         S 函数
     Input:
         inX：输入数据
     Output:
         S函数变换后的结果
-### gradAscent(dataMatIn,classLabels)
+### gradascent(datamatIn,classlabels)
     Description:
         梯度上升算法
     Input:
@@ -242,14 +242,14 @@
         classLabels：类别标签
     Output:
         weights：梯度上升算法训练后返回的权重向量
-### plotBestFit(weights)
+### plotbestfit(weights)
     Description:
         根据权重，绘制分类结果
     Input:
         weights：梯度上升算法训练后返回的权重向量
     Output:
         在图中画出两类样本及分类直线
-### stocGradAscent0(dataMatrix,classLabels)
+### stocgradascent0(datamatrix,classlabels)
     Description:
         随机梯度上升算法，相比于本文件里上面的梯度上升算法，此处的算法每次只用
         一个样本来更新权重，上面的那个每次都用全部样本更新权重，更新速度慢
@@ -258,7 +258,7 @@
         classLabels:标签
     Output:
         weights：随机梯度上升算法训练后返回的权重向量
-### stocGradAscent1(dataMatrix,classLabels,numIter=150)
+### stocgradascent1(datamatrix,classlabels,numIter=150)
     Description:
         改进的随机梯度上升算法，相比于本文件里上面的随机梯度上升算法，此处的算法每次随机选择
         一个样本来更新权重，已选中的删除，下次不再选择，并且更新权重时增加了一个权值
@@ -267,7 +267,7 @@
         classLabels:标签
     Output:
         weights：改进随机梯度上升算法训练后返回的权重向量
-### classifyVector(inX,weights)
+### classifyvector(inx,weights)
     Description:
         根据随机梯度上升算法训练得到的权值进行分类
     Input:
@@ -275,7 +275,7 @@
         weights：改进随机梯度上升算法训练后返回的权重向量
     Output:
         分类标签
-### classifyProb(inX,weights)
+### classifyprob(inx,weights)
     Description:
         根据随机梯度上升算法训练得到的权值进行分类
     Input:
@@ -283,10 +283,10 @@
         weights：改进随机梯度上升算法训练后返回的权重向量
     Output:
         分类概率值
-### colicTest()
+### colictest()
     Description:
         逻辑回归的应用示例
-### multiTest()
+### multitest()
     Description:
         累计误差
 ## resultplot.py
@@ -304,7 +304,7 @@
         down：BER最小值位置的下限
         a：up、down范围内的最小特征值数目
         tmp：a对应的BER值
-## sortedFeature.csv
+## sortedfeature.csv
     按照特征值重要性进行排序后的特征值矩阵
 ## testann.py
     Description:
@@ -340,7 +340,7 @@
         evaluate_test：各折测试集的各个评价指标，最后两行分别为平均值及标准差
         prenum_train：各折训练集混淆矩阵的结果
         prenum_test：各折测试集混淆矩阵的结果
-## testLR.py
+## testlr.py
      Description:
         本程序为逻辑回归算法的运行程序
     输入参数：
@@ -357,7 +357,7 @@
         evaluate_test：各折测试集的各个评价指标，最后两行分别为平均值及标准差
         prenum_train：各折训练集混淆矩阵的结果
         prenum_test：各折测试集混淆矩阵的结果
-## testSVM.py
+## testsvm.py
      Description:
         本程序为支持向量机算法的运行程序
     输入参数：
