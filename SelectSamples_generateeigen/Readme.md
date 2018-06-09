@@ -3,31 +3,31 @@
 * [Abstract](#Abstract)  
 * [select-11-hours-data-with matlab](#select-11-hours-data-with-matlab)  
     * [loaddata.m](#loaddata)  
-    * [age.m](#age.m)
-    * [selectAHE.m](#selectAHE.m)
-        * [findAHE.m](#findAHE.m)
-        * [AHEEpisode.m](#AHEEpisode.m) 
+    * [age.m](#age)
+    * [selectAHE.m](#selectAHE)
+        * [findAHE.m](#findAHE)
+        * [AHEEpisode.m](#AHEEpisode) 
     *  [select_nonAHE](#select_nonAHE) 
-        * [mvdir.m](#mvdir.m)
-        * [selectnon.m](#selectnon.m)
-        * [findnonAHE.m](#findnonAHE.m)
+        * [mvdir.m](#mvdir)
+        * [selectnon.m](#selectnon)
+        * [findnonAHE.m](#findnonAHE)
 * [generate-feature-eigen-with-matlab](#generate-feature-eigen-with-matlab)
-    * [combinedata.m](#combinedata.m)
-    * [create_eigen.m](#create_eigen.m)
-    * [extractagesex.m](#extractagesex.m)
-    * [latest.m](#latest.m)
-    * [mmMissingValues.m](#mmMissingValues.m)
-    * [pro_nan.m](#pro_nan.m)
-    * [reSample.m](#reSample.m)
-    * [tezhengzhi.m](#tezhegnzhi.m)
-    * [xigma.m](#xigma.m)
+    * [combinedata.m](#combinedata)
+    * [create_eigen.m](#create_eigen)
+    * [extractagesex.m](#extractagesex)
+    * [latest.m](#latest)
+    * [mmMissingValues.m](#mmMissingValues)
+    * [pro_nan.m](#pro_nan)
+    * [reSample.m](#reSample)
+    * [tezhengzhi.m](#tezhegnzhi)
+    * [xigma.m](#xigma)
 * [extract-timepoint-with-matlab](#extract-mimic-data-with-matlab)
-    * [extracttime.m](#extracttime.m)
-    * [locate_AHE.m](#locate_AHE.m)
-    * [savetimepoint_ahe.m](#savetimepoint_ahe.m)
-    * [savetimepoint_non.m](#savetimepoint_non.m)
+    * [extracttime.m](#extracttime)
+    * [locate_AHE.m](#locate_AHE)
+    * [savetimepoint_ahe.m](#savetimepoint_ahe)
+    * [savetimepoint_non.m](#savetimepoint_non)
 * [generate_final_eigen_with_SQL](#generate_final_eigen_with_SQL)
-    * [extract_clinical_data.sql](#extract_clinical_data.sql)
+    * [extract_clinical_data.sql](#extract_clinical_data)
     * [sheet_export_from_database](#sheet_export_from_database)
         * export_finaleigen_duplicate.csv
         * export_finaleigen_single.csv
@@ -56,7 +56,7 @@ ___
     %   以"_selected.mat"结尾的文件，存放到path里
 
 
-### age.m
+### age
     % Description:
     %   从.hea文件中提取患者的年龄和性别，对于缺失情况用-100代替，然后从临床数据库
     %   中提取或插值补全
@@ -66,7 +66,7 @@ ___
     %   path='D:\Available_yj\already\*_age.mat'
 
 
-### selectAHE.m
+### selectAHE
     %Description：
     %   从path='D:\Available_yj\already\*_selected.mat'文件中筛选发生急性低血压的样本，
     %   将发生的存储到path=‘D:\1yj_AHE\'中
@@ -75,7 +75,7 @@ ___
     %Output:
     %   path='D:\1yj_AHE\*_AHE.mat'
     
-#### findAHE.m
+#### findAHE
         function [AHEdata] = findAHE( inputdata,ForecastWin,Win,VAL,TOL)
         %------------------------程序功能说明-------------------%
         %本程序的功能为按照急性低血压的定义：预测窗口内（1个小时）对于给定的每分钟
@@ -97,7 +97,7 @@ ___
         %       VAL：发生低血压时血压值的最低限值，60mmHg（输入60）
         %       TOL：Win内血压值地与VAL的个数占整个窗口的比例（输入0.9）
         
-#### AHEEpisode.m
+#### AHEEpisode
         function [ ahe_find] = AHEEpisode( input,WIN,VAL,TOL )
         %Description:
         %   该函数的功能为判断1个小时的数据窗口内是否发生了急性低血压
@@ -114,7 +114,7 @@ ___
 ### select_nonAHE
     文件夹，里面的两个文件用来筛选对照组：未发生急性低血压的样本
 
-#### mvdir.m
+#### mvdir
     %Description:
     %   1.提取出所有发生低血压的病例的文件名称
     %   2.将发生低血压的病例的数据文件夹移动到指定位置，剩下的即为未发生低血压的数据
@@ -123,7 +123,7 @@ ___
     %Output:
     %   path='D:\Available_yj\AHEdir'
 
-#### selectnon.m
+#### selectnon
     function [ startpoint,output_data ] = selectnon( input_data )
     %selectnon 函数筛选未发生低血压的病例
     %筛选规则：
@@ -138,7 +138,7 @@ ___
     %       output_data:筛选结果，遇到1个符合规则的即保存，后续数据不再进行判断
     %       startpoint:11小时数据段的起始位置
 
-#### findnonAHE.m
+#### findnonAHE
     %Description:
     %   调用selectnon.m文件，筛选未发生急性低血压的样本
     %Input:
@@ -152,14 +152,14 @@ ___
         2. 对筛选出的病例组和对照组11小时数据，提取对应的年龄性别，并和第一步的特征值矩阵
                 手动合并
         3.对于血压数据，通过对有创血压每隔30min求一次平均值，来模拟无创血压 
-### combinedata.m
+### combinedata
     %Description:
     %   该程序的功能为对挑战项目中训练集和测试集的数据进行合并整理，合并前是按照参数进行
     %   存储，即训练集中所有60个样本的心率存在一个.mat文件中，拆分后为按照样本进行存储，
     %   每个样本按照心率、动脉收缩压、动脉舒张压、动脉平均压、脉搏、呼吸、血氧的顺序进行存储
     %   对于训练集，即保存60个660*7的.mat文件
     
-### create_eigen.m
+### create_eigen
     %Description：
     %   本程序为每个生理参数提取出10个统计参数，构成特征值矩阵
     %Calls：
@@ -174,7 +174,7 @@ ___
     %Output：
     %   final_eigen：特征值矩阵
     
-### extractagesex.m
+### extractagesex
     %Description:
     %   本函数提取筛选出的AHE及nonAHE样本的年龄和性别，select-11-hours-data-with-matlab
     %   文件夹中的age.m函数从头文件中提取出的年龄性别是单独存放的，此处整理成特征值矩阵
@@ -188,7 +188,7 @@ ___
     %   2.发生AHE的有一个时间格式不对的，需留意
     %   3. 提取完年龄性别，直接复制粘贴到特征值矩阵中
 
-### latest.m
+### latest
     %Description:
     %   该文件为从11小时数数据记录中提取每个参数的统计量生成特征值矩阵的原始程序，
     %   还包括挑战项目中训练集、测试集的110个样本，但由于后期无法提取临床参数，所以
@@ -207,7 +207,7 @@ ___
     %   nonAHE：未发生AHE的11小时数据段文件夹
     %Output:
     %   final_eigen：特征值矩阵
-### mmMissingValues.m
+### mmMissingValues
     %Description:
      %   该函数寻找缺失值及异常大、异常小值的位置
      %   各生理参数上限值：  
@@ -220,7 +220,7 @@ ___
     %Output:
     %   yout：将异常值置零后的数据
     
-### pro_nan.m
+### pro_nan
     %Description:
     %   pro_nan函数处理特征参数矩阵中含有NAN的项
     %   当某一生理参数某一个样本缺失时，求得的统计变量为非法值或者0值
@@ -231,7 +231,7 @@ ___
     %Output：
     %    output：补全之后的特征参数矩阵
     
-### reSample.m
+### reSample
     %Description:
     %   对输入数据每隔30个数求一次平均值，主要目的是用有创血压模拟无创血压，30min测一次
     %Input：
@@ -239,7 +239,7 @@ ___
     %Output:
     %   output：30min求一个平均值之后的数据
     
-### tezhegnzhi.m
+### tezhegnzhi
     %Description:
     %   tezhengzhi 求各个特征值
     %
@@ -258,7 +258,7 @@ ___
     %   data_value(9): data_range, 极差
     %   data_value(10): data_var,   方差
     
-### xigma.m
+### xigma
     %Description:
     %   根据拉依达准则，去除可能存在问题的异常数据，直接置零
     %Input:
@@ -274,7 +274,7 @@ ___
         3. 保存未发生AHE样本原始数据记录的起始时刻以及11小时数据段对应的位置，
             手动和之前的特征值矩阵进行拼接，用于后期从数据库中提取临床参数
              
-### extracttime.m
+### extracttime
     %Description:
     %   将提取出的日期拆分了，直接用datestr总出错
     %Input:
@@ -282,7 +282,7 @@ ___
     %Output:
     %   starttimestr:PostgresSQL支持的时间字符串
     
-### locate_AHE.m
+### locate_AHE
     %Description：
     %   找到筛选出的数据段在原始数据段中的位置
     %Input：
@@ -291,7 +291,7 @@ ___
     %Output：
     %   startpoint:AHE数据段在原始数据段中的位置
     
-### savetimepoint_ahe.m
+### savetimepoint_ahe
     %Description:
     %   提取所有发生AHE样本数据记录的起始时间以及11小时数据段的起始位置
     %Input:
@@ -301,7 +301,7 @@ ___
     %   time_point(i-2,2)=ahe_id：subject_id
     %   starttime_point(i-2,:)=starttime:整个数据记录的起始时间
     
-### savetimepoint_non.m
+### savetimepoint_non
     %Description:
     %   提取所有未发生AHE样本数据记录的起始时间以及11小时数据段的起始位置
     %Input:
@@ -315,7 +315,7 @@ ___
     本文件夹内程序的主要功能为根据筛选出的AHE、非AHE样本对应的subject_id,  
     starttime,startpoint,从数据库中提取GCS、温度、身高、体重数据
     
-### extract_clinical_data.sql
+### extract_clinical_data
     --从matlab中得到包含年龄、性别、整个数据段其实记录时间、AHE开始时间点、70个特征值的表
     --根据subject_id,找到GCS、身高、体重、体温数据
     
