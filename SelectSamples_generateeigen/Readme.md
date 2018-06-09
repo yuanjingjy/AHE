@@ -311,7 +311,7 @@ ___
     %   time_point(i-2,2)=ahe_id：subject_id
     %   starttime_point(i-2,:)=starttime:整个数据记录的起始时间
     
-## generate_final_eigen_with_SQL
+## generate_final_eigen_with_sql
     本文件夹内程序的主要功能为根据筛选出的AHE、非AHE样本对应的subject_id,  
     starttime,startpoint,从数据库中提取GCS、温度、身高、体重数据
     
