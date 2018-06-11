@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4c2d2e88-717c-4b7a-8f57-43baada17d6b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SelectSamples_generateeigen/extract-timepoint-with-matlab/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/SelectSamples_generateeigen/extract-timepoint-with-matlab/Readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -100,15 +99,19 @@
       </file>
       <file leaf-file-name=".gitattributes" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SelectSamples_generateeigen/extract-timepoint-with-matlab/.gitattributes">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="28">
+              <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="Readme.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SelectSamples_generateeigen/extract-timepoint-with-matlab/Readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="318">
-                <caret line="46" column="11" lean-forward="true" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
+              <first_editor relative-caret-position="458">
+                <caret line="51" column="43" lean-forward="true" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
               </first_editor>
               <second_editor />
             </state>
@@ -169,9 +172,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="573" />
-    <option name="y" value="31" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="218" />
+    <option name="y" value="81" />
     <option name="width" value="1313" />
     <option name="height" value="706" />
   </component>
@@ -441,7 +444,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528515613458</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Acute Hypotension Episode">
+      <created>1528687418527</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1528687418527</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Acute Hypotension Episode">
+      <created>1528687704639</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1528687704639</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -453,7 +470,7 @@
       <window_info id="DB Browser" order="2" weight="0.32948717" />
       <window_info anchor="bottom" id="DB Execution Console" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32911393" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32909605" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" sideWeight="0.5007153" side_tool="true" weight="0.29106188" />
@@ -817,13 +834,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SelectSamples_generateeigen/extract-timepoint-with-matlab/.gitattributes">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="1" column="11" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SelectSamples_generateeigen/extract-timepoint-with-matlab/Readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="318">
-            <caret line="46" column="11" lean-forward="true" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
+          <first_editor relative-caret-position="458">
+            <caret line="51" column="43" lean-forward="true" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
           </first_editor>
           <second_editor />
         </state>
