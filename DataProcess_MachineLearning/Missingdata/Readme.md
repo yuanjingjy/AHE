@@ -1,8 +1,8 @@
 # Content
 
 * [Abstract](#abstract)
-* [export_finaleigen_single](#export_finaleigen_single.csv)
-* [final_eigen.csv](#final_eigen.csv)
+* [export_finaleigen_single](#export_finaleigen_single)
+* [final_eigen.csv](#final_eigen)
 * [pro_miss.R](#pro_miss)
 
 ## abstract
@@ -10,10 +10,10 @@
     再按照缺失比例人为构造缺失数据集；利用常用的缺失值插补方法对构造出的缺失
     数据集进行插补；比较插补结果和完整数据集之间的误差，确定最优的插补方法
     并进行缺失值的插补。
-## export_finaleigen_single.csv
+## export_finaleigen_single
     从数据库中提取出来的含有缺失值的特征值矩阵，即需要进行插补的矩阵
     
-## final_eigen.csv
+## final_eigen
     插补之后的结果
     
 ## pro_miss

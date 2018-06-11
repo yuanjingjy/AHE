@@ -1,16 +1,16 @@
 # Content
 
-* [Abstract](#Abstract)
-    * [extract_clinical_data.sql](#extract_clinical_data.sql)
+* [Abstract](#abstract)
+    * [extract_clinical_data.sql](#extract_clinical_data)
     * [sheet_export_from_database](#sheet_export_from_database)
         * export_finaleigen_duplicate.csv
         * export_finaleigen_single.csv
 
-## Abstract
+## abstract
     本文件夹内程序的主要功能为根据筛选出的AHE、非AHE样本对应的subject_id,  
     starttime,startpoint,从数据库中提取GCS、温度、身高、体重数据
     
-### extract_clinical_data.sql
+### extract_clinical_data
     --从matlab中得到包含年龄、性别、整个数据段其实记录时间、AHE开始时间点、70个特征值的表
     --根据subject_id,找到GCS、身高、体重、体温数据
     

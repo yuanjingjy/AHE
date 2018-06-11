@@ -1,23 +1,23 @@
 # Content
 ***
-* [Abstract](#Abstract)
-    * [loaddata.m](#loaddata.m)  
-    * [age.m](#age.m)
-    * [selectAHE.m](#selectAHE.m)
-        * [findAHE.m](#findAHE.m)
-        * [AHEEpisode.m](#AHEEpisode.m) 
-    *  [select_nonAHE](#select_nonAHE) 
-        * [mvdir.m](#mvdir.m)
-        * [selectnon.m](#selectnon.m)
-        * [findnonAHE.m](#findnonAHE.m)
+* [Abstract](#abstract)
+    * [loaddata.m](#loaddata)  
+    * [age.m](#age)
+    * [selectAHE.m](#selectahe)
+        * [findAHE.m](#findahe)
+        * [AHEEpisode.m](#aheepisode) 
+    *  [select_nonAHE](#select_nonahe) 
+        * [mvdir.m](#mvdir)
+        * [selectnon.m](#selectnon)
+        * [findnonAHE.m](#findnonahe)
         
- ## Abstract
+ ## abstract
     该文件夹内程序的主要功能为：  
         1. 对原始波形文件去除基线和增益，按照特定顺序排列各参数
         2. 从每个数据记录对应的头文件中提取年龄和性别
         3. 根据AHE定义，从全部数据记录中筛选发生AHE的11小时数据段
         4. 挑选完AHE患者后，从剩余患者中筛选出未发生AHE的11小时数据段
-### loaddata.m
+### loaddata
     % Description：
     %   本程序对convert_wavedata之后的原始波形文件进行格式转换，按照基线、增益处理后，
     %   将生理参数按照特定的顺序进行排列：HR、SBP、DBP、MBP、PULSE、RESP、SPO2
@@ -27,7 +27,7 @@
     %   以"_selected.mat"结尾的文件，存放到path里
 
 
-### age.m
+### age
     % Description:
     %   从.hea文件中提取患者的年龄和性别，对于缺失情况用-100代替，然后从临床数据库
     %   中提取或插值补全
@@ -37,7 +37,7 @@
     %   path='D:\Available_yj\already\*_age.mat'
 
 
-### selectAHE.m
+### selectahe
     %Description：
     %   从path='D:\Available_yj\already\*_selected.mat'文件中筛选发生急性低血压的样本，
     %   将发生的存储到path=‘D:\1yj_AHE\'中
@@ -46,7 +46,7 @@
     %Output:
     %   path='D:\1yj_AHE\*_AHE.mat'
     
-#### findAHE.m
+#### findahe
         function [AHEdata] = findAHE( inputdata,ForecastWin,Win,VAL,TOL)
         %------------------------程序功能说明-------------------%
         %本程序的功能为按照急性低血压的定义：预测窗口内（1个小时）对于给定的每分钟
@@ -68,7 +68,7 @@
         %       VAL：发生低血压时血压值的最低限值，60mmHg（输入60）
         %       TOL：Win内血压值地与VAL的个数占整个窗口的比例（输入0.9）
         
-#### AHEEpisode.m
+#### aheepisode
         function [ ahe_find] = AHEEpisode( input,WIN,VAL,TOL )
         %Description:
         %   该函数的功能为判断1个小时的数据窗口内是否发生了急性低血压
@@ -82,10 +82,10 @@
         %   VAL：发生低血压的ABPMean下限值，为60mmHg
         %   TOL：发生AHE时，低于下限值VAL的点所占的比例，为0.9
 
-### select_nonAHE
+### select_nonahe
     文件夹，里面的两个文件用来筛选对照组：未发生急性低血压的样本
 
-#### mvdir.m
+#### mvdir
     %Description:
     %   1.提取出所有发生低血压的病例的文件名称
     %   2.将发生低血压的病例的数据文件夹移动到指定位置，剩下的即为未发生低血压的数据
@@ -94,7 +94,7 @@
     %Output:
     %   path='D:\Available_yj\AHEdir'
 
-#### selectnon.m
+#### selectnon
     function [ startpoint,output_data ] = selectnon( input_data )
     %selectnon 函数筛选未发生低血压的病例
     %筛选规则：
@@ -109,7 +109,7 @@
     %       output_data:筛选结果，遇到1个符合规则的即保存，后续数据不再进行判断
     %       startpoint:11小时数据段的起始位置
 
-#### findnonAHE.m
+#### findnonahe
     %Description:
     %   调用selectnon.m文件，筛选未发生急性低血压的样本
     %Input:
