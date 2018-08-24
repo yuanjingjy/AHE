@@ -15,10 +15,10 @@ import  pandas as pd
 import  matplotlib.pyplot as plt
 
 #加载评价指标结果数据集，_ks、_min、 _all分别和MEWS进行比较
-adaboost=pd.read_csv('BER/BER_AdaBoost_ks.csv')
-ann=pd.read_csv('BER/BER_ANN_ks.csv')
-logistic=pd.read_csv('BER/BER_LR_ks.csv')
-svm=pd.read_csv('BER/BER_SVM_ks.csv')
+adaboost=pd.read_csv('BER/BER_AdaBoost_min.csv')
+ann=pd.read_csv('BER/BER_ANN_min.csv')
+logistic=pd.read_csv('BER/BER_LR_min.csv')
+svm=pd.read_csv('BER/BER_SVM_min.csv')
 mews=pd.read_csv('BER/BER_MEWS.csv')
 
 #提取出出各方法的TPR列并合并
@@ -80,9 +80,9 @@ BER=BER*100
 
 #画箱线图
 font1 = {'family':'Times New Roman',
-         'weight':'normal',
-         'size': 14}
-plt.tick_params(labelsize=14)
+         'weight':'bold',
+         'size': 16}
+plt.tick_params(labelsize=16)
 
 # labels = plt.get_xticklabels() + plt.get_yticklabels()
 plt.figure(1)
@@ -93,7 +93,7 @@ plt.boxplot(Data,widths = 0.7,
             boxprops={'linewidth':1.5},
             medianprops={'linewidth':1.5},
             whiskerprops={'linewidth':1.5},
-            flierprops = {'linestyle':'-','linewidth':1.5})
+            capprops = {'linewidth':1.5})
 plt.ylim(0,100)
 # plt.xlabel("Models")
 plt.ylabel("TPR(%)",font1)

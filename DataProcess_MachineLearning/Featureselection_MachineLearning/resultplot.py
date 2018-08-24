@@ -24,10 +24,11 @@ import  matplotlib.pyplot as plt
 import  numpy as np
 
 
+
 sortFS=pd.read_csv('FSsort.csv')#特征值排序结果
 names=sortFS['Features']#排序后特征值名称
-stdresult=pd.read_csv('selectresult\SVMfit.csv',names=['index','std'])
-meanresult=pd.read_csv('selectresult\SVMmean.csv',names=['index','mean'])
+stdresult=pd.read_csv('selectresult\LRfit.csv',names=['index','std'])
+meanresult=pd.read_csv('selectresult\LRmean.csv',names=['index','mean'])
 
 #十折交叉验证后后BER的平均值、标准差，FS.py程序运行出来的
 stdvalue=stdresult[1:81]['std']
@@ -48,24 +49,42 @@ tmp=meanvalue[a]
 
 
 #创建画布，开始绘图
-plt.figure(1)
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
+
+font1 = {'family':'Times New Roman',
+         'weight':'bold',
+         'size': 16}
+plt.tick_params(labelsize=16)
 plt.xlim(1,80)
-plt.ylim(0,50)
+plt.ylim(10,35)
 x=np.linspace(1,80,80)#刻度1：1：80
-line_mean = plt.plot(x,meanvalue, 'r-', label='BER_mean')#BER平均值变化曲线
-line_down=plt.plot(x,std_down ,'b:', label='BER_down')#（BER平均值-标准差）变化曲线
-line_up=plt.plot(x,std_up, 'b:', label='BER_up')#（BER平均值+标准差）变化曲线
-plt.fill_between(x,std_up,std_down,color='gray',alpha=0.25)#填充上下标准差之间的范围
-line_h=plt.hlines(up,1,80,'r',alpha=0.25)#画横线BER最小值+对应标准差处的
-plt.plot(minindex,minvalue,color='r',marker='o')#作marker，在BER最小值位置
-plt.plot(a,tmp,'r^')#作marker，在最小允许特征子集处
-plt.xticks([1,20,30,40,50,60,70,80,a,minindex],size=8)#标出需要添加的横坐标
-line_v=plt.vlines(minindex,0,minvalue,'r',alpha=0.25)#画竖线，最小BER位置处
-line_v1=plt.vlines(a,0,tmp,'r',alpha=0.25)#画竖线，最小特征值对应位置处
-plt.legend(loc='upper right')#制定label的位置
+line_mean = ax.plot(x,meanvalue, 'r-', label='BER_mean',linewidth = 2)#BER平均值变化曲线
+line_down=ax.plot(x,std_down ,'b:', label='BER_down',linewidth = 2)#（BER平均值-标准差）变化曲线
+line_up=ax.plot(x,std_up, 'b:', label='BER_up',linewidth = 2)#（BER平均值+标准差）变化曲线
+ax.fill_between(x,std_up,std_down,color='gray',alpha=0.25)#填充上下标准差之间的范围
+line_h=ax.hlines(up,1,80,'r',alpha=0.25,linewidth = 2)#画横线BER最小值+对应标准差处的
+ax.plot(minindex,minvalue,color='r',marker='o',markersize = 10)#作marker，在BER最小值位置
+ax.plot(a,tmp,'r^',markersize = 10)#作marker，在最小允许特征子集处
+ax.set_xticks([1,7,10,20,30,40,50,60,67,70,80])#标出需要添加的横坐标
+
+ax.set_xticklabels([1,' ',' ',20,30,40,50,60,' ',' ',80],size=16)
+# ax.set_xticks([10.5, 39], minor=True)
+# ax.set_xticklabels(['10 11', '38 40'], minor=True,size=16)
+
+ax.set_xticks([8,68], minor=True)
+ax.set_xticklabels(['7 10','67 70'], minor=True,size=16)
+
+for line in ax.xaxis.get_minorticklines():
+    line.set_visible(False)
+
+
+line_v=plt.vlines(minindex,0,minvalue,'r',alpha=0.25,linewidth = 2)#画竖线，最小BER位置处
+line_v1=plt.vlines(a,0,tmp,'r',alpha=0.25,linewidth = 2)#画竖线，最小特征值对应位置处
+plt.legend(loc='upper right',fontsize = 16)#制定label的位置
 # plt.title('BER for LR')
-plt.xlabel("Number of features")
-plt.ylabel("BER(%)")
+plt.xlabel("Number of features",font1)
+plt.ylabel("BER(%)",font1)
 plt.show()
 
 
