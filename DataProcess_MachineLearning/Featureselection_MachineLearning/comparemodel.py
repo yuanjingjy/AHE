@@ -79,11 +79,28 @@ BER['MEWS']=mews['BER']
 BER=BER*100
 
 #画箱线图
+font1 = {'family':'Times New Roman',
+         'weight':'normal',
+         'size': 14}
+plt.tick_params(labelsize=14)
+
+# labels = plt.get_xticklabels() + plt.get_yticklabels()
 plt.figure(1)
-AUC.boxplot()#直接用DataFrame的boxplot()功能绘制箱线图，这样自动加载横轴
+# TPR.boxplot( )#直接用DataFrame的boxplot()功能绘制箱线图，这样自动加载横轴
+Data = TPR
+Data = np.array(Data)
+plt.boxplot(Data,widths = 0.7,
+            boxprops={'linewidth':1.5},
+            medianprops={'linewidth':1.5},
+            whiskerprops={'linewidth':1.5},
+            flierprops = {'linestyle':'-','linewidth':1.5})
 plt.ylim(0,100)
 # plt.xlabel("Models")
-plt.ylabel("AUC(%)")
+plt.ylabel("TPR(%)",font1)
+index_x = [' ','ANN','LR','SVM','AdaBoost','MEWS']
+scale_ls = range(6)
+plt.xticks(scale_ls,index_x)
+plt.grid()
 plt.show()
 
 print('test')
