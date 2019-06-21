@@ -1,7 +1,7 @@
 clc;
 clear all;
 % addpath(genpath('E:/预测低血容量/201703'))
-addpath(genpath('..\AHE\SelectSamples\select-11-hours-data-with-matlab'))
+addpath(genpath('D:\01袁晶\Githubcode\AHE\SelectSamples_generateeigen\select-11-hours-data-with-matlab'))
 
 % Description：
 %   本程序对convert_wavedata之后的原始波形文件进行格式转换，按照基线、增益处理后，
@@ -11,7 +11,7 @@ addpath(genpath('..\AHE\SelectSamples\select-11-hours-data-with-matlab'))
 %Output data：
 %   以"_selected.mat"结尾的文件，存放到path里
 
-path='D:\Available_yj\already\';%存放数据的文件夹
+path='D:\01袁晶\AHEdata\already\';%存放数据的文件夹
 FileList=dir(path);%提取文件夹下的文件
 cd(path)%路径切换到存放数据的文件夹
 for i=1:length(FileList)
@@ -24,6 +24,7 @@ for i=1:length(FileList)
       
       %=====对于每一个hea文件，从中提取出所记录数据的名称、基线、增益=====%
      for j=1:length(file_tmp)%对于每一个hea文件
+         FS = 0;
          filename_tmp=file_tmp(j).name; %文件的名称
          fid=fopen(filename_tmp);%获取文件的id编号         
          lines = get_lines( fid ); %文件行数      
@@ -34,6 +35,23 @@ for i=1:length(FileList)
             data_tmp=cell2mat(data(data_i));
             if data_tmp(1)=='s'
                 hea_end=hea_end+1;
+            end
+            %% 判断采样频率
+            if data_i==1
+                data_tmp_split = regexp(data_tmp,' ','split');
+                sample_rate = cellstr(data_tmp_split(1,3));%提取采样频率
+                if strcmp(sample_rate,'1')
+                    FS = 1;
+                    time_point = regexp(data_tmp_split(1,end-1),':','split');%将时间拆分成小时分钟秒钟
+                    [m,n] = size(time_point{1,1});
+                    if n == 3
+                        time_sec = time_point{1,1}{1,3};%提取秒钟，在求平均的时候去除，使数据在自然分钟内进行平均
+                        lag = str2num(time_sec);
+                    else
+                        lag = 0;
+                    end
+                    
+                end
             end
          end
          data=data(2:hea_end,:);%去掉第一行和后3行
@@ -88,7 +106,7 @@ for i=1:length(FileList)
           %============================数据数值转换===========================%
       clear val;
       clear value_p;
-      clear val_final;
+      val_final =[];
       matfile_name=[filename_tmp(1:end-4),'.mat'];
       
       load (matfile_name);
@@ -143,6 +161,16 @@ for i=1:length(FileList)
          if (strcmp(switch_name , 'NBPMean'))
              val_final(:,10)=value_p(:,name_i);%第十列无创平均压
          end
+      end
+      
+      if length(val_final) == 0
+          continue;
+      end
+      
+      [val_m,val_n] = size(val_final);
+      if FS ==1 && val_m >120
+          tmp = val_final((60-lag+1):end,:);
+         val_final = reSample(tmp); 
       end
           valuename=[filename_tmp(1:end-4),'_select.mat'];
           save (valuename, 'val_final');
