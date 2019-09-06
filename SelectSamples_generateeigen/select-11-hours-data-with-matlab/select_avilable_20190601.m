@@ -35,13 +35,27 @@ for i = 1:length(selected_AHE)
     cd(dir_i);
     load(filename_i);
     selected_data = val_final(t0-600:t0+59,1:7);%t0前面600个数据，后面59个数据
-    savename = ['D:\01袁晶\AHEdata\AHE_2019\',cell2mat(selected_AHE(i,1)),'.mat'];
-    save (savename, 'selected_data');%保存截取出的数据段
-    cd ..
-    movefile(dir_i,'D:\01袁晶\AHEdata\already\AHEdir');%筛选完AHE的文件夹进行移动，从剩下的里面筛选未发生AHE的
-    clear selected_data
-    clear val_final
-    clear t0
+    flag_missrate = 0;
+%     for k = 1:7
+%         [m,n] = find(val_final(1:600,k)<=0);
+%         if length(m) >180
+%             flag_missrate = 1;
+%            break; 
+%         end
+%     end
+    if flag_missrate == 0 
+        savename = ['D:\01袁晶\AHEdata\AHE_2019\',cell2mat(selected_AHE(i,1)),'.mat'];
+        save (savename, 'selected_data');%保存截取出的数据段
+        cd ..
+        movefile(dir_i,'D:\01袁晶\AHEdata\already\AHEdir');%筛选完AHE的文件夹进行移动，从剩下的里面筛选未发生AHE的
+        clear selected_data
+        clear val_final
+        clear t0   
+    else
+        cd ..
+    end
+    
+
 end
 
 %% 开始筛选未发生AHE的样本

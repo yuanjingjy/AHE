@@ -27,8 +27,8 @@ import  numpy as np
 
 sortFS=pd.read_csv('FSsort.csv')#特征值排序结果
 names=sortFS['Features']#排序后特征值名称
-stdresult=pd.read_csv('selectresult\LRfit.csv',names=['index','std'])
-meanresult=pd.read_csv('selectresult\LRmean.csv',names=['index','mean'])
+stdresult=pd.read_csv('selectresult\SVMfit.csv',names=['index','std'])
+meanresult=pd.read_csv('selectresult\SVMmean.csv',names=['index','mean'])
 
 #十折交叉验证后后BER的平均值、标准差，FS.py程序运行出来的
 stdvalue=stdresult[1:81]['std']
@@ -44,6 +44,7 @@ minvalue=meanvalue[minindex]#最小BER值
 
 up=std_up[minindex]
 down=std_down[minindex]
+test = meanvalue[(meanvalue<up)&(meanvalue>down)].index
 a=(meanvalue[(meanvalue<up)&(meanvalue>down)].index)[0]
 tmp=meanvalue[a]
 
@@ -66,14 +67,14 @@ ax.fill_between(x,std_up,std_down,color='gray',alpha=0.25)#填充上下标准差
 line_h=ax.hlines(up,1,80,'r',alpha=0.25,linewidth = 2)#画横线BER最小值+对应标准差处的
 ax.plot(minindex,minvalue,color='r',marker='o',markersize = 10)#作marker，在BER最小值位置
 ax.plot(a,tmp,'r^',markersize = 10)#作marker，在最小允许特征子集处
-ax.set_xticks([1,7,10,20,30,40,50,60,67,70,80])#标出需要添加的横坐标
+ax.set_xticks([1,10,11,20,30,38,40,50,60,70,80])#标出需要添加的横坐标
 
-ax.set_xticklabels([1,' ',' ',20,30,40,50,60,' ',' ',80],size=16)
-# ax.set_xticks([10.5, 39], minor=True)
-# ax.set_xticklabels(['10 11', '38 40'], minor=True,size=16)
+ax.set_xticklabels([1,' ',' ',20,30,' ',' ',50,60,70,80],size=16)
+# ax.set_xticks([9.5], minor=True)
+# ax.set_xticklabels(['9 10'], minor=True,size=16)
 
-ax.set_xticks([8,68], minor=True)
-ax.set_xticklabels(['7 10','67 70'], minor=True,size=16)
+ax.set_xticks([10.5,39], minor=True)
+ax.set_xticklabels(['10 11','38 40'], minor=True,size=16)
 
 for line in ax.xaxis.get_minorticklines():
     line.set_visible(False)
@@ -84,7 +85,7 @@ line_v1=plt.vlines(a,0,tmp,'r',alpha=0.25,linewidth = 2)#画竖线，最小特�
 plt.legend(loc='upper right',fontsize = 16)#制定label的位置
 # plt.title('BER for LR')
 plt.xlabel("Number of features",font1)
-plt.ylabel("BER(%)",font1)
+plt.ylabel("BER (%)",font1)
 plt.show()
 
 

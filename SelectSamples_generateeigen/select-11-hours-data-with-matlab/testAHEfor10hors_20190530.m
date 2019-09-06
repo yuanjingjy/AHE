@@ -7,7 +7,7 @@
 
 clc
 clear all
-path = 'D:\01Ô¬¾§\AHEdata\AHE_2019';
+path = 'D:\01Ô¬¾§\AHEdata\processed_2019\AHE';
 cd(path)
 addpath(genpath('D:\01Ô¬¾§\Githubcode\AHE\SelectSamples_generateeigen\select-11-hours-data-with-matlab'))
 count = 0;
@@ -16,12 +16,13 @@ for i = 1:length(FileList)
    filename_i = FileList(i).name ;
    if (filename_i(1)=='s' )
       load (filename_i)
-      datafile = selected_data(1:600,4); 
+      datafile = outputdata(1:600,4); 
       for i=1:5:540
          X_input = datafile(i:i+59,1);
          [ ahe_find] = AHEEpisode( X_input,30,60,0.9 );
          if ahe_find ==1
             count = count + 1;
+            movefile(filename_i,'D:\01Ô¬¾§\AHEdata\processed_2019\AHE\AHE');
             break; 
          end
       end

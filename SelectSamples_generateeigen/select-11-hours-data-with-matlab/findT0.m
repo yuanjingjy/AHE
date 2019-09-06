@@ -27,17 +27,37 @@ for i=1:length(FileList)
          load(filename_tmp)
          
          [ns,nf] = size(val_final);
-         if ns<60 || nf<7
+         if ns<601 || nf<7
             continue
          else
-            for i = 1:5:(ns-60)
-               X_input = val_final(i:i+59,4);
-               [ ahe_find] = AHEEpisode( X_input,30,60,0.9 ); 
-               if ahe_find == 1 
+            for m = 601:5:(ns-60)
+               X_input = val_final(m:m+59,4);
+               [ ahe_find] = AHEEpisode( X_input,30,60,0.9 );
+               obs_ahe = 0;
+               if ahe_find ==1 %找到一个AHE点，研究其前面的数据是否满足要求：前面10个小时没有发生AHE，
+                   %且前面10个小时内任意生理参数的缺失比例小于30%；
+                  obs_data = val_final((m-600):(m-1),1:7);%观察点前面10个小时的数据
+                  count = 0;
+                  for num_feature = 1:7%判断T0之前10小时内，7个生理参数的缺失比例
+                     [n_row,n_col] = find(obs_data(:,num_feature)<=0);
+                     if length(n_row) > 180
+                        count = count +1; 
+                     end
+                  end
+                  for k = 1:3:540%本循环判断T0之前10个小时内是否发生了AHE
+                     test_input = obs_data(k:k+59,4);
+                     [test_ahe] = AHEEpisode(test_input,30,60,0.9);                    
+                     if test_ahe == 1 
+                         obs_ahe = 1;
+                         break;
+                     end
+                  end
+               end               
+               if ahe_find == 1 && obs_ahe == 0 && count == 0
                    filetosave(num_sample,1)={filename_tmp(:,1:end-11)};
                    filetosave(num_sample,2)={filename_tmp(:,2:6)};
                    filetosave(num_sample,3)={ns};
-                   filetosave(num_sample,4)={i}
+                   filetosave(num_sample,4)={m}
                    num_sample = num_sample +1 ;
                    break;
                end 
@@ -50,5 +70,5 @@ for i=1:length(FileList)
    end
 end
 
-save('D:\01袁晶\AHEdata\filetosave.mat','filetosave')
+save('D:\01袁晶\AHEdata\filetosave_ahe.mat','filetosave')
 xlswrite('D:\01袁晶\AHEdata\test.xlsx',filetosave,'Sheet1')

@@ -15,10 +15,10 @@ import  pandas as pd
 import  matplotlib.pyplot as plt
 
 #加载评价指标结果数据集，_ks、_min、 _all分别和MEWS进行比较
-adaboost=pd.read_csv('BER/BER_AdaBoost_min.csv')
-ann=pd.read_csv('BER/BER_ANN_min.csv')
-logistic=pd.read_csv('BER/BER_LR_min.csv')
-svm=pd.read_csv('BER/BER_SVM_min.csv')
+adaboost=pd.read_csv('BER/BER_AdaBoost_ks.csv')
+ann=pd.read_csv('BER/BER_ANN_ks.csv')
+logistic=pd.read_csv('BER/BER_LR_ks.csv')
+svm=pd.read_csv('BER/BER_SVM_ks.csv')
 mews=pd.read_csv('BER/BER_MEWS.csv')
 
 #提取出出各方法的TPR列并合并
@@ -87,7 +87,7 @@ plt.tick_params(labelsize=16)
 # labels = plt.get_xticklabels() + plt.get_yticklabels()
 plt.figure(1)
 # TPR.boxplot( )#直接用DataFrame的boxplot()功能绘制箱线图，这样自动加载横轴
-Data = TPR
+Data = ACC
 Data = np.array(Data)
 plt.boxplot(Data,widths = 0.7,
             boxprops={'linewidth':1.5},
@@ -96,7 +96,7 @@ plt.boxplot(Data,widths = 0.7,
             capprops = {'linewidth':1.5})
 plt.ylim(0,100)
 # plt.xlabel("Models")
-plt.ylabel("TPR(%)",font1)
+plt.ylabel("ACC (%)",font1)
 index_x = [' ','ANN','LR','SVM','AdaBoost','MEWS']
 scale_ls = range(6)
 plt.xticks(scale_ls,index_x)

@@ -17,7 +17,7 @@ ahe_find=0;
 for winlen=WIN:60%判断窗的长度为30min或更长时间内
    for winini=1:N-winlen+1%该判断窗长下，窗的起始位置
       X=input(winini:winini+winlen-1); 
-      id=find(X<=VAL);
+      id=find(X<=VAL & X>=10);
       per_VAL=length(id)/winlen;%低于60mmHg血压值所占的比例
       
       if per_VAL>=TOL%小于60mmHg的血压值比例是否超过90%
